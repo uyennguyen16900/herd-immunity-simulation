@@ -1,0 +1,5 @@
+Population size: 10000
+Vaccination percentage: 0.2
+Virus name: Ebola)
+Mortality rate: 0.7
+Reproduction rate: 0.25

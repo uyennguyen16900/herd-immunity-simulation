@@ -30,11 +30,12 @@ class Person(object):
         if self.infection is not None:
             chance = random.random()
             if chance < self.infection.mortality_rate:
-                self.is_alive == False
-                self.infection == None
+                self.is_alive = False
+                self.infection = None
                 return False
             else:
-                self.is_vaccinated == True
+                self.is_vaccinated = True
+                self.infection = None
                 return True
 
         return None
@@ -81,22 +82,16 @@ def test_did_survive_infection():
     # TODO: Create a Virus object to give a Person object an infection
     virus = Virus("Dysentery", 0.7, 0.2)
     # TODO: Create a Person object and give them the virus infection
-    person = Person(4, False, virus)
+    person = Person(4, True, virus)
 
     # Resolve whether the Person survives the infection or not
     survived = person.did_survive_infection()
     # Check if the Person survived or not
     if survived:
         assert person.is_alive is True
-        # TODO: Write your own assert statements that test
-        # the values of each attribute for a Person who survived
-        # assert ...
         assert person.is_vaccinated is True
         assert person.infection is None
     else:
         assert person.is_alive is False
-        # TODO: Write your own assert statements that test
-        # the values of each attribute for a Person who did not survive
-        # assert ...
         assert person.is_vaccinated is False
         assert person.infection is None

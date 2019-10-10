@@ -1,0 +1,5 @@
+Population size: 100
+Vaccination percentage: 0.7
+Virus name: Test)
+Mortality rate: 0.2
+Reproduction rate: 0.8
