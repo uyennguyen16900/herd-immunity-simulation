@@ -139,7 +139,7 @@ class Simulation(object):
             time_step_counter += 1
             should_continue = self._simulation_should_continue()
             # self.logger.log_time_step(============)
-        print(f'The simulation has ended after {time_step_counter} turns.'.format(time_step_counter))
+        print(f'The simulation has ended after {time_step_counter} turn(s).'.format(time_step_counter))
 
     def time_step(self):
         ''' This method should contain all the logic for computing one time step
@@ -226,6 +226,24 @@ class Simulation(object):
                 self.current_infected += 1
 
         self.newly_infected = []
+
+def test_create_population():
+    virus = Virus("Test", 0.8, 0.2)
+    # 100 people, 80% vaccination, 10 initial infected
+    sim = Simulation(100, 0.7, virus, 10)
+
+    inf_list = []
+    vacc_list = []
+    assert len(sim.population) == 100
+
+    for person in sim.population:
+        if person.infection is not None:
+            inf_list.append(person)
+        elif person.is_vaccinated:
+            vacc_list.append(person)
+
+    assert len(inf_list) == 10
+    assert len(vacc_list) == 70
 
 if __name__ == "__main__":
     params = sys.argv[1:]
